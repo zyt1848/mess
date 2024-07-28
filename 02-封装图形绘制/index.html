@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL画三角形示例</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+
+    <script src="shape.js"></script>
+    <script>
+        let shape = new Shape("canvas");
+        shape.initShader();
+        shape.initProgram();
+        shape.draw();
+        // can't work！！
+    </script>
+</body>
+</html>
