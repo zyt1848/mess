@@ -24,9 +24,15 @@
         let shape = new Shape("canvas");
         shape.initShader();
         shape.initProgram();
-        shape.draw();
-        // can't work！！
-        // ahaha
+        shape.drawPoints();
+
+        // 点击屏幕画点
+        window.addEventListener("click", (event) => {
+            let pos = shape.exchangePos(event.x, event.y);
+            shape.addPoints(pos.x, pos.y)
+            console.log(shape.points)
+            shape.drawPoints();
+        })
     </script>
 </body>
 </html>
