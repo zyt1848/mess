@@ -140,4 +140,8 @@ class Shape {
  * 原因：gl_PointSize = 10.0; // 数字不能加f
  * 
  * this.points.push(x, y); push进去的总是undefined数据？？？
+ * index.html let pos = shape.exchangePos(event.x, event.y); 
+ * push()的数据错误，应使用索引push数据
+            shape.addPoints(pos[0], pos[1]);
+ * 
  */
