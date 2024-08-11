@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL画三角形示例</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+
+    <script src="shape.js"></script>
+    <script>
+        let shape = new Shape("canvas");
+        shape.initShader();
+        shape.initProgram();
+        shape.initAttrib();
+
+        shape.drawPoints();
+        shape.drawLines();
+
+        // 点击屏幕画点
+        window.addEventListener("click", (event) => {
+            let pos = shape.exchangePos(event.x, event.y);
+            shape.addPoints(pos[0], pos[1]);
+            shape.drawPoints();
+            shape.drawLines();
+        })
+    </script>
+</body>
+</html>

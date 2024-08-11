@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL封装绘制矩形</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        body {
+            overflow: hidden;
+        }
+        
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+
+    <script src="shape.js"></script>
+    <script>
+        const shape = new Shape("canvas");
+        shape.initShader();
+        shape.initProgram();
+        shape.initAttrib();
+        
+        // 将两个点转换为矩形的四个顶点
+        // shape.transformRect();
+        // shape.drawPoints();
+        // shape.drawRect();
+
+
+        // 点击屏幕画点
+        window.addEventListener("click", (event) => {
+            const [x, y] = shape.exchangePos(event.x, event.y);
+            shape.addPoint(x, y);
+            shape.drawPoints();
+
+            let lenP = shape.points.length;
+            if (lenP === 4) {
+                let x1 = shape.points[0];
+                let y1 = shape.points[1];
+                let width = shape.points[2] - x1;
+                let height = shape.points[3] - y1;
+                shape.drawRect(x1, y1, width, height);
+            }
+        });
+    </script>
+</body>
+</html>
